@@ -1,4 +1,3 @@
-import {combineReducers} from 'redux';
 import authed from '../reducers/authed';
 import entities from '../reducers/entities';
 import environment from '../reducers/environment';
@@ -7,14 +6,16 @@ import navigator from '../reducers/navigator';
 import player from '../reducers/player';
 import playlists from '../reducers/playlists';
 
-const rootReducer = combineReducers({
-    authed,
-    entities,
-    environment,
-    modal,
-    navigator,
-    player,
-    playlists
-});
+const rootReducer = (state = {}, action) => {
+  return {
+      authed: authed(state.authed, action),
+      entities: entities(state.entities, action),
+      environment: environment(state.environment, action),
+      modal: modal(state.modal, action),
+      navigator: navigator(state.navigator, action),
+      player: player(state.player, action),
+      playlists: playlists(state.playlists, action)
+  };
+};
 
 export default rootReducer;

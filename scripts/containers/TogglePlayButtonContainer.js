@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
+import connect from '../connect.js';
 import TogglePlayButton from '../components/TogglePlayButton';
 
 class TogglePlayButtonContainer extends Component {

@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
+import connect from '../connect.js';
 import MobileNav from '../components/MobileNav';
 import Nav from '../components/Nav';
 

@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
+import connect from '../connect.js';
 
 import {fetchSongsIfNeeded} from '../actions/playlists';
 
@@ -8,7 +8,7 @@ import Stickify from '../components/Stickify';
 import Toolbar from '../components/Toolbar';
 
 class Songs extends Component {
-    componentWillMount() {
+    componentDidMount() {
         const {dispatch, playlist, playlists} = this.props;
         if (!(playlist in playlists) || playlists[playlist].items.length === 0) {
             dispatch(fetchSongsIfNeeded(playlist));
@@ -17,6 +17,7 @@ class Songs extends Component {
 
     componentWillReceiveProps(nextProps) {
         const {dispatch, playlist, playlists} = this.props;
+
         if (playlist !== nextProps.playlist) {
             if (!(nextProps.playlist in playlists) || playlists[nextProps.playlist].items.length === 0) {
                 dispatch(fetchSongsIfNeeded(nextProps.playlist));
@@ -26,7 +27,6 @@ class Songs extends Component {
 
     render() {
         const {authed, dispatch, height, playingSongId, playlist, playlists, sticky, songs, time, users} = this.props;
-
         return (
             <div className={'songs' + (sticky ? ' sticky' : '')}>
                 <Toolbar dispatch={dispatch} playlist={playlist} sticky={sticky} time={time} />
