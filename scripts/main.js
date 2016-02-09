@@ -9,13 +9,7 @@ import { noredux } from './noredux.js';
 
 require('../styles/main.scss');
 
-const NoreduxApp = noredux(<App/>, reducer, render);
-
-function render() {
-  ReactDOM.render(
-      <NoreduxApp/>,
-      document.getElementById('main')
-  );
-}
-
-render();
+ReactDOM.render(
+  noredux(<App/>, reducer),
+  document.getElementById('main')
+);
