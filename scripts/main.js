@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App';
 import reducer from './reducers/index.js';
+import { setContext } from 'react-simple-context';
 
 require('../styles/main.scss');
 
@@ -19,27 +20,9 @@ function dispatch(action) {
   }
 }
 
-class Wrapper extends Component {
-  getChildContext() {
-    return { state, dispatch };
-  }
-
-  render() {
-    return React.Children.only(this.props.children);
-  }
-}
-
-Wrapper.childContextTypes = {
-  state: React.PropTypes.object,
-  dispatch: React.PropTypes.func
-};
-
 function render() {
   ReactDOM.render(
-      <Wrapper>
-        <App />
-      </Wrapper>
-      ,
+      setContext({ state, dispatch }, <App />),
       document.getElementById('main')
   );
 }

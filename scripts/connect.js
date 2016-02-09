@@ -1,23 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { getContext } from 'react-simple-context';
 
-function connect(map) {
-  return (Comp) => {
-
-    class Wrapper extends Component {
-      render() {
-        const { state, dispatch } = this.context;
-        const props = map(state);
-        return <Comp {...{ dispatch, ...props }}/>;
-      }
-    }
-
-    Wrapper.contextTypes = {
-      state: React.PropTypes.object,
-      dispatch: React.PropTypes.func
-    };
-
-    return Wrapper;
-  }
-}
-
-export default connect;
+export default map => C => () => getContext(({ state, dispatch }) => <C {...{ dispatch, ...map(state) }}/>);
