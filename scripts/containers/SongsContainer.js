@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import connect from '../connect.js';
+import { connect } from '../noredux.js';
 import {fetchSongsIfNeeded} from '../actions/playlists';
 import MobileSongs from '../components/MobileSongs';
 import Songs from '../components/Songs';

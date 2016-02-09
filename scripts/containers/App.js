@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import connect from '../connect.js';
+import { connect } from '../noredux.js';
 
 import {initAuth} from '../actions/authed';
 import {initEnvironment} from '../actions/environment';

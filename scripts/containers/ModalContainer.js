@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import connect from '../connect.js';;
+import { connect } from '../noredux.js';;
 import Modal from '../components/Modal';
 
 class ModalContainer extends Component {

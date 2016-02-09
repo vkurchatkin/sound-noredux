@@ -5,24 +5,15 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App';
 import reducer from './reducers/index.js';
-import { setContext } from 'react-simple-context';
+import { noredux } from './noredux.js';
 
 require('../styles/main.scss');
 
-let state = reducer({}, {});
-
-function dispatch(action) {
-  if (typeof action === 'function') {
-    action(dispatch, () => state);
-  } else {
-    state = reducer(state, action);
-    render();
-  }
-}
+const NoreduxApp = noredux(<App/>, reducer, render);
 
 function render() {
   ReactDOM.render(
-      setContext({ state, dispatch }, <App />),
+      <NoreduxApp/>,
       document.getElementById('main')
   );
 }
